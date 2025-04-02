@@ -35,7 +35,6 @@ jobs:
           
           cd /home/${{ secrets.USERNAME }}/digital_marmot/${{ vars.APP_NAME }}
 
-          yarn install
-          yarn build
+          /bin/bash build.sh
 
           sudo systemctl restart ${{ secrets.SERVICE_NAME }}
