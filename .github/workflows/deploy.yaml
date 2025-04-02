@@ -38,4 +38,4 @@ jobs:
           yarn install
           yarn build
 
-          sudo systemctl restart ${{ vars.APP_NAME }}
+          sudo systemctl restart ${{ secrets.SERVICE_NAME }}
