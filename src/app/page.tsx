@@ -1,77 +1,39 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import {
-  Calendar,
-  ChevronRight,
-  CreditCard,
-  MapPin,
-  Shield,
-  Trash2,
-  Truck,
-} from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import SkipsTable from "@/components/skips/SkipsTable";
 import SkipsFootbar from "@/components/skips/SkipsFootbar";
-
-const STEPS = [
-  {
-    icon: MapPin,
-    title: "Postcode",
-    isComplete: true,
-    isInProgress: false,
-  },
-  {
-    icon: Trash2,
-    title: "Waste Type",
-    isComplete: true,
-    isInProgress: false,
-  },
-  {
-    icon: Truck,
-    title: "Select Skip",
-    isComplete: false,
-    isInProgress: true,
-  },
-  {
-    icon: Shield,
-    title: "Permit Check",
-    isComplete: false,
-    isInProgress: false,
-  },
-  {
-    icon: Calendar,
-    title: "Choose Date",
-    isComplete: false,
-    isInProgress: false,
-  },
-  {
-    icon: CreditCard,
-    title: "Payment",
-    isComplete: false,
-    isInProgress: false,
-  },
-];
+import { NAVIGATION_STEPS } from "@/components/navigation/Navigation";
+import {
+  API_BASE_URL,
+  CHALLENGE_AREA,
+  CHALLENGE_POSTCODE,
+} from "@/lib/constants";
 
 export default function SkipsPage() {
-  const postCode = "LE10";
-  const area = "Hinckley";
-  const apiUrl = `https://app.wewantwaste.co.uk/api/skips/by-location?postcode=${postCode}&area=${area}`;
   const [skips, setSkips] = useState<Skip[]>([]);
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const isFetchingRef = useRef<boolean>(false);
 
-  async function getSkips() {
+  async function getSkips(postCode: string, area: string) {
+    if (isFetchingRef.current) return;
     try {
-      const response = await fetch(apiUrl);
+      isFetchingRef.current = true;
+      const response = await fetch(
+        `${API_BASE_URL}/skips/by-location?postcode=${postCode}&area=${area}`,
+      );
       const data = await response.json();
       setSkips(data);
       setIsLoading(false);
+      isFetchingRef.current = false;
     } catch (error) {
       console.error("Error fetching skip sizes:", error);
     }
   }
 
   useEffect(() => {
-    getSkips();
+    getSkips(CHALLENGE_POSTCODE, CHALLENGE_AREA);
   }, []);
 
   return (
@@ -79,7 +41,7 @@ export default function SkipsPage() {
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex justify-center mb-12 overflow-x-auto">
           <div className="flex items-center space-x-2 sm:space-x-4">
-            {STEPS.map((step, index) => (
+            {NAVIGATION_STEPS.map((step, index) => (
               <React.Fragment key={`step-${index}`}>
                 {index !== 0 && (
                   <>
