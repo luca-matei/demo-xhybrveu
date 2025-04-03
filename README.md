@@ -21,6 +21,7 @@ My approach:
 - discards "per week" as the pricing is actually per period (I went to checkout)
 - specifies that the price is excluding VAT; also fixes the footer
 - is responsive to all screen sizes
+- sometimes, only on mobile, the table needs to be scrolled horizontally, this is a common issue with tables, but it's intuitive to use and much better than having to scroll vertically through a long list of cards
 
 You can find a live demo of the page here: https://wewantwaste.lucamatei.dev
 
