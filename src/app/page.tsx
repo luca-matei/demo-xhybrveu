@@ -84,10 +84,10 @@ export default function SkipsPage() {
                 {index !== 0 && (
                   <>
                     <ChevronRight
-                      className={`sm:hidden size-6 ${step.isComplete ? "text-[#4ADE80]" : step.isInProgress ? "text-white" : "text-[#2A2A2A]"}`}
+                      className={`md:hidden size-6 ${step.isComplete ? "text-[#4ADE80]" : step.isInProgress ? "text-white" : "text-[#2A2A2A]"}`}
                     />
                     <div
-                      className={`hidden sm:block w-16 h-px ${step.isComplete ? "bg-[#4ADE80]" : step.isInProgress ? "bg-white" : "bg-[#2A2A2A]"}`}
+                      className={`hidden md:block w-16 h-px ${step.isComplete ? "bg-[#4ADE80]" : step.isInProgress ? "bg-white" : "bg-[#2A2A2A]"}`}
                     ></div>
                   </>
                 )}

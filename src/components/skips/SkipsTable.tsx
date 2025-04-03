@@ -59,7 +59,7 @@ export default function SkipsTable({
                       onClick={() => setSelectedSkip(skip)}
                       className={`cursor-pointer bg-[#1C1C1C] outline outline-2 rounded-md transition-all ${selectedSkip?.id === skip.id ? "outline-[#4ADE80]" : "outline-[#1C1C1C] hover:outline-[#2A2A2A]"}`}
                     >
-                      <td className="whitespace-nowrap rounded-l-md py-4 pl-4 pr-3 font-medium text-center sm:pl-0">
+                      <td className="whitespace-nowrap rounded-l-md px-3 py-4 font-medium text-center">
                         <input
                           type="radio"
                           checked={selectedSkip?.id === skip.id}
