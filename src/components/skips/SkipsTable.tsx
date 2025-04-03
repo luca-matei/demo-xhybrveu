@@ -2,6 +2,14 @@ import { Check, X } from "lucide-react";
 import React from "react";
 import SkipsTableSkeleton from "@/components/skips/SkipsTableSkeleton";
 
+function IconCheckOrX({ condition }: { condition: boolean }) {
+  return condition ? (
+    <Check className="size-4 text-brand" />
+  ) : (
+    <X className="size-4 text-red-400" />
+  );
+}
+
 export default function SkipsTable({
   skips,
   selectedSkip,
@@ -77,18 +85,10 @@ export default function SkipsTable({
                         £{skip.price_before_vat}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-gray-400 w-32">
-                        {skip.allowed_on_road ? (
-                          <Check className="size-4 text-brand" />
-                        ) : (
-                          <X className="size-4 text-red-400" />
-                        )}
+                        <IconCheckOrX condition={skip.allowed_on_road} />
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 rounded-r-md text-gray-400 w-32">
-                        {skip.allows_heavy_waste ? (
-                          <Check className="size-4 text-brand" />
-                        ) : (
-                          <X className="size-4 text-red-400" />
-                        )}
+                        <IconCheckOrX condition={skip.allows_heavy_waste} />
                       </td>
                     </tr>
                   ))}
