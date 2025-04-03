@@ -19,6 +19,7 @@ interface SkipsTableProps {
   skips: Skip[];
   selectedSkip: Skip | null;
   setSelectedSkip: (skip: Skip | null) => void;
+  isLoading: boolean;
 }
 
 interface SkipsFootbarProps {

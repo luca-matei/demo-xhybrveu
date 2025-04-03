@@ -57,12 +57,14 @@ export default function SkipsPage() {
   const apiUrl = `https://app.wewantwaste.co.uk/api/skips/by-location?postcode=${postCode}&area=${area}`;
   const [skips, setSkips] = useState<Skip[]>([]);
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   async function getSkips() {
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
       setSkips(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching skip sizes:", error);
     }
@@ -110,6 +112,7 @@ export default function SkipsPage() {
             skips={skips}
             selectedSkip={selectedSkip}
             setSelectedSkip={setSelectedSkip}
+            isLoading={isLoading}
           />
         </div>
         {selectedSkip && <SkipsFootbar skip={selectedSkip} />}
