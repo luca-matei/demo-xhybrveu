@@ -84,16 +84,16 @@ export default function SkipsPage() {
                 {index !== 0 && (
                   <>
                     <ChevronRight
-                      className={`md:hidden size-6 ${step.isComplete ? "text-[#4ADE80]" : step.isInProgress ? "text-white" : "text-[#2A2A2A]"}`}
+                      className={`md:hidden size-6 ${step.isComplete ? "text-brand" : step.isInProgress ? "text-white" : "text-secondary"}`}
                     />
                     <div
-                      className={`hidden md:block w-16 h-px ${step.isComplete ? "bg-[#4ADE80]" : step.isInProgress ? "bg-white" : "bg-[#2A2A2A]"}`}
+                      className={`hidden md:block w-16 h-px ${step.isComplete ? "bg-brand" : step.isInProgress ? "bg-white" : "bg-secondary"}`}
                     ></div>
                   </>
                 )}
                 <button
                   disabled={step.isComplete && step.isInProgress}
-                  className={`flex items-center whitespace-nowrap transition-colors ${step.isComplete ? "text-[#4ADE80] cursor-pointer hover:text-[#4ADE80]" : step.isInProgress ? "text-white" : "text-white/60 cursor-not-allowed opacity-50"}`}
+                  className={`flex items-center whitespace-nowrap transition-colors ${step.isComplete ? "text-brand cursor-pointer hover:text-brand" : step.isInProgress ? "text-white" : "text-white/60 cursor-not-allowed opacity-50"}`}
                 >
                   <step.icon className="size-6"></step.icon>
                 </button>
