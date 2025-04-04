@@ -9,7 +9,7 @@ Identified issues:
 - blue text was hard to read and it didn't blend well overall
 - the steps bar barely fit any screen size
 - the footer that appears after you select a skip size was faulty
-- images are repetitive, take up too much space and are not relevant
+- images are repetitive, take up too much space and are not relevant; they may also increase load time
 - the buttons in the footer didn't follow the same color transition (one was lighting up, the other was darkening)
 
 My approach:
